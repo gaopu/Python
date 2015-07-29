@@ -63,22 +63,6 @@ def loop():
 	# 删除key-value
 	thirdDict.pop(key)
 	
-# # 监控线程运行时间
-# def thirdMonitor(num):
-# 	# 开始时间
-# 	startTime = time.time()
-	
-# 	t = threading.Thread(target = loop, name = str(num) + "loopThird")
-# 	t.start()
-	
-# 	# 当线程是激活的,到时间就结束
-# 	while t.isAlive():
-# 		currentTime = time.time()
-# 		# 1s时间
-# 		if currentTime - startTime > 1000:
-# 			return
-# 		time.sleep(0.001)
-	
 medicamentF = open("/home/geekgao/medicament",'w')
 orgF = open("/home/geekgao/org",'w')
 
