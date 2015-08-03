@@ -66,10 +66,15 @@ def loop():
 medicamentF = open("/home/geekgao/medicament",'w')
 orgF = open("/home/geekgao/org",'w')
 
+thisStartTime = time.time()
 while i < 453482:
 	num = i
-	# 线程要始终保持在100个
-	if len(thirdDict) < 100:
+	# 线程要始终保持在50个
+	if len(thirdDict) < 50:
+		# 等待超时就退出（没有这个有时候线程并不能全部退出，看资源管理器，说“等候频道 poll_scheme_time”）
+		if time.time() - thisStartTime > 10:
+			print "等待时间到,强行退出."
+			break
 		print '新进程:' + str(num) + "loopThird" + "进程总数:" + str(len(thirdDict))
 		t = threading.Thread(target = loop, name = str(num) + "loopThird")
 		# t = threading.Thread(target = thirdMonitor, name = str(num) + "thirdMonitor",args=(num,))

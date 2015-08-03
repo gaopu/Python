@@ -60,7 +60,7 @@ while i < 830000:
 
 thisStartTime = time.time()
 while thirdCount != 0:
-	# 等待超时就退出（有时候线程并不能全部退出，看资源管理器，说“等候频道 poll_scheme_time”）
+	# 等待超时就退出（没有这个有时候线程并不能全部退出，看资源管理器，说“等候频道 poll_scheme_time”）
 	if time.time() - thisStartTime > 10:
 		print "等待时间到,强行退出."
 		break
