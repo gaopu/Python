@@ -84,8 +84,9 @@ class DownCourse(object):
 		
 		print '课程名:' + courseName + ' 课程数量:' + str(courseCount)
 		# 课程的编号,构建课程的页面地址
-		i = 1
-		while i <= courseCount:
+		i = 0
+		while i < courseCount:
+			i += 1
 			pageUrl = courseUrl.split('.html')[0] + '_' + str(i) + '.html?ss=1'
 			# 本节课程的html代码
 			request = urllib2.urlopen(pageUrl)
@@ -97,14 +98,12 @@ class DownCourse(object):
 			videoUrl = re.search(r'<source src="(.*?)"',pageHtml)
 			# 有的页面写的课时比实际课时多,会匹配不到视频地址
 			if videoUrl == None:
-				i += 1
 				continue
 			else:
 				videoUrl = videoUrl.group(1)
 			print '正在下载' + name + '...'
 			# 存储视频的Path: 总路径/课程名/每一节的名称
-			urllib.urlretrieve(videoUrl,folderPath + name + '.mp4',self.cbk)
-			i += 1
+			urllib.urlretrieve(videoUrl,folderPath +  + name + '.mp4',self.cbk)
 		print '下载完成'
 	
 	# 从网上下载的可以显示下载进度的函数
