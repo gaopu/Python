@@ -103,7 +103,7 @@ class DownCourse(object):
 				videoUrl = videoUrl.group(1)
 			print '正在下载' + name + '...'
 			# 存储视频的Path: 总路径/课程名/每一节的名称
-			urllib.urlretrieve(videoUrl,folderPath +  + name + '.mp4',self.cbk)
+			urllib.urlretrieve(videoUrl,folderPath + str(i) + name + '.mp4',self.cbk)
 		print '下载完成'
 	
 	# 从网上下载的可以显示下载进度的函数
