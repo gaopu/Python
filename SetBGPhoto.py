@@ -8,6 +8,7 @@ import re
 html = urllib.urlopen("http://cn.bing.com/").read()
 
 imgAddress = re.search(r'g_img={url: "(.*?)"',html).group(1).replace('\\','')
+imgAddress = "http://cn.bing.com" + imgAddress
 
 
 if imgAddress:

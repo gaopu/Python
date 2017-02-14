@@ -20,33 +20,33 @@ for c in computers:
 	# 计数
 	i += 1
 	print ('%3d:'%i),
-	
+
 	# ip
 	ip = c.split('"')[1].split('"')[0]
 	print ip + '  ',
 	# front代表紧接着的下次分割时的字符串
 	front = ip + '","'
-	
+
 	# mac
 	mac = c.split(front)[1].split('"')[0]
 	print mac + '  ',
 	front = front + mac + '",'
-	
+
 	# 上传量(B)
 	upSize = c.split(front)[1].split(',')[0]
 	print ("[↓%8.2fMB "%(float(upSize) / 1024 / 1024)),
 	front = front + upSize + ','
-	
+
 	# 下载量(B)
 	downSize = c.split(front)[1].split(',')[0]
 	print ("↑%8.2fMB]\t"%(float(downSize) / 1024 / 1024)),
 	front = front + downSize + ','
-	
+
 	# 上传速度(B/s)
 	up = c.split(front)[1].split(',')[0]
 	print ("[↓%8.2fKB/s "%(float(up) / 1024)),
 	front = front + up + ','
-	
+
 	# 上传速度(B/s)
 	down = c.split(front)[1].split(',')[0]
 	print ("↑%8.2fKB/s]\t"%(float(down) / 1024))
