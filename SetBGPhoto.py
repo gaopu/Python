@@ -4,6 +4,7 @@ import time
 import os
 import urllib
 import re
+import os
 
 html = urllib.urlopen("http://cn.bing.com/").read()
 
@@ -12,7 +13,11 @@ imgAddress = "http://cn.bing.com" + imgAddress
 
 
 if imgAddress:
-	fileName = "/home/geekgao/图片/BingImg/" + time.strftime("%Y-%m-%d") + ".jpg"
+	path = os.path.expanduser('~') + "/BingImg/"
+	if os.path.exists(path) == False:
+		os.makedirs(path)
+
+	fileName = path + time.strftime("%Y-%m-%d") + ".jpg"
 	print "今天Bing图片的地址是:" + imgAddress
 	print "正在下载……"
 	urllib.urlretrieve(imgAddress, fileName)
